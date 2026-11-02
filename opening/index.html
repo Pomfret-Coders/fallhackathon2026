@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fall Hack-a-Thon</title>
+  <link rel="stylesheet" href="slides.css">
+</head>
+<body>
+  <main id="deck">
+    <section class="slide on intro" data-title="Groups" data-hold>
+      <h1>Fall Hack&#8209;a&#8209;Thon 2026</h1>
+      <div class="groups">
+        <article class="group" style="--i: 0">
+          <h2>Team Momentum <span>p</span></h2>
+          <ul><li>Luke</li><li>Brady</li><li>Brett</li><li>Shomarie</li></ul>
+        </article>
+        <article class="group" style="--i: 1">
+          <h2>Team Amplitude <span>A</span></h2>
+          <ul><li>Cayden</li><li>James H.</li><li>Christoph</li><li>Ronan</li></ul>
+        </article>
+        <article class="group" style="--i: 2">
+          <h2>Team Torque <span>τ</span></h2>
+          <ul><li>HQ</li><li>Keke</li><li>Mike</li><li>Ryan</li></ul>
+        </article>
+        <article class="group" style="--i: 3">
+          <h2>Team Wavelength <span>λ</span></h2>
+          <ul><li>James L.</li><li>Colby</li><li>Justus</li><li>Elias</li></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide intro" data-title="Title" data-hold>
+      <h1>Fall Hack&#8209;a&#8209;Thon 2026</h1>
+      <canvas data-demo="title" data-hold data-loop="off" width="1200" height="420"></canvas>
+      <p class="sub">Simulations with Matter.js</p>
+    </section>
+
+    <section class="slide" data-title="World and objects">
+      <div class="pair">
+        <article>
+          <p class="who">Challenge 1</p>
+          <h2>Create a world with gravity</h2>
+          <canvas data-demo="gravity" width="600" height="400"></canvas>
+        </article>
+        <article>
+          <p class="who">Challenge 2</p>
+          <h2>Add multiple types of objects</h2>
+          <canvas data-demo="shapes" width="600" height="400"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Mouse and bodies">
+      <div class="pair">
+        <article>
+          <p class="who">Challenge 3</p>
+          <h2>Add mouse dragging</h2>
+          <canvas data-demo="drag" width="600" height="400"></canvas>
+        </article>
+        <article>
+          <p class="who">Challenge 4</p>
+          <h2>Adjust numbers of bodies dynamically</h2>
+          <canvas data-demo="count" width="600" height="400"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Hits and forces">
+      <div class="pair">
+        <article>
+          <p class="who">Challenge 5</p>
+          <h2>Collision Detection</h2>
+          <canvas data-demo="collide" width="600" height="400"></canvas>
+        </article>
+        <article>
+          <p class="who">Challenge 6</p>
+          <h2>Additional Forces</h2>
+          <canvas data-demo="force" width="600" height="400"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Joints and stats">
+      <div class="pair">
+        <article>
+          <p class="who">Challenge 7</p>
+          <h2>Connect bodies</h2>
+          <canvas data-demo="connect" width="600" height="400"></canvas>
+        </article>
+        <article>
+          <p class="who">Challenge 8</p>
+          <h2>Show stats</h2>
+          <canvas data-demo="stats" width="600" height="400"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section class="slide end" data-title="Eight Challenges">
+      <h2 class="board-title">Eight Challenges</h2>
+      <ol class="board">
+        <li><canvas data-demo="gravity" width="600" height="400"></canvas><span>Create a world with gravity</span></li>
+        <li><canvas data-demo="shapes" width="600" height="400"></canvas><span>Add multiple types of objects</span></li>
+        <li><canvas data-demo="drag" width="600" height="400"></canvas><span>Add mouse dragging</span></li>
+        <li><canvas data-demo="count" width="600" height="400"></canvas><span>Adjust numbers of bodies dynamically</span></li>
+        <li class="center"><strong>Fall Hack&#8209;a&#8209;Thon 2026</strong><em>Matter.js Simulations</em></li>
+        <li><canvas data-demo="collide" width="600" height="400"></canvas><span>Collision Detection</span></li>
+        <li><canvas data-demo="force" width="600" height="400"></canvas><span>Additional Forces</span></li>
+        <li><canvas data-demo="connect" width="600" height="400"></canvas><span>Connect bodies</span></li>
+        <li><canvas data-demo="stats" width="600" height="400"></canvas><span>Show stats</span></li>
+      </ol>
+    </section>
+
+    <section class="slide end" data-title="Key terms">
+      <h2 class="board-title">Eight Challenges</h2>
+      <div class="with-terms">
+        <div class="terms">
+          <div>
+            <h3>1 · Gravity</h3>
+            <ul><li><code>Engine</code></li><li><code>Render</code></li><li><code>Runner</code></li><li><code>engine.gravity</code></li></ul>
+          </div>
+          <div>
+            <h3>2 · Objects</h3>
+            <ul><li><code>Bodies.circle</code></li><li><code>Bodies.rectangle</code></li><li><code>Bodies.polygon</code></li><li><code>isStatic</code></li><li><code>restitution</code></li><li><code>friction</code></li><li><code>density</code></li></ul>
+          </div>
+          <div>
+            <h3>3 · Dragging</h3>
+            <ul><li><code>Mouse</code></li><li><code>MouseConstraint</code></li></ul>
+          </div>
+          <div>
+            <h3>4 · Body count</h3>
+            <ul><li><code>Composite.add</code></li><li><code>Composite.remove</code></li><li><code>Query.point</code></li></ul>
+          </div>
+        </div>
+        <ol class="board">
+          <li><canvas data-demo="gravity" width="600" height="400"></canvas><span>Create a world with gravity</span></li>
+          <li><canvas data-demo="shapes" width="600" height="400"></canvas><span>Add multiple types of objects</span></li>
+          <li><canvas data-demo="drag" width="600" height="400"></canvas><span>Add mouse dragging</span></li>
+          <li><canvas data-demo="count" width="600" height="400"></canvas><span>Adjust numbers of bodies dynamically</span></li>
+          <li class="center"><strong>Fall Hack&#8209;a&#8209;Thon 2026</strong><em>Matter.js Simulations</em></li>
+          <li><canvas data-demo="collide" width="600" height="400"></canvas><span>Collision Detection</span></li>
+          <li><canvas data-demo="force" width="600" height="400"></canvas><span>Additional Forces</span></li>
+          <li><canvas data-demo="connect" width="600" height="400"></canvas><span>Connect bodies</span></li>
+          <li><canvas data-demo="stats" width="600" height="400"></canvas><span>Show stats</span></li>
+        </ol>
+        <div class="terms">
+          <div>
+            <h3>5 · Collisions</h3>
+            <ul><li><code>collisionStart</code></li><li><code>event.pairs</code></li><li><code>bodyA</code></li><li><code>bodyB</code></li></ul>
+          </div>
+          <div>
+            <h3>6 · Forces</h3>
+            <ul><li><code>beforeUpdate</code></li><li><code>Body.applyForce</code></li></ul>
+          </div>
+          <div>
+            <h3>7 · Connect</h3>
+            <ul><li><code>Constraint.create</code></li><li><code>pointA</code></li><li><code>bodyB</code></li><li><code>length</code></li><li><code>stiffness</code></li></ul>
+          </div>
+          <div>
+            <h3>8 · Stats</h3>
+            <ul><li><code>afterUpdate</code></li><li><code>Body.getSpeed</code></li><li><code>runner.enabled</code></li><li><code>Composite.clear</code></li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p id="count">0 / 6</p>
+    <p class="keys">Arrow keys</p>
+  </footer>
+
+  <script src="../reference/vendor/matter.min.js"></script>
+  <script src="demos.js"></script>
+  <script src="deck.js"></script>
+</body>
+</html>

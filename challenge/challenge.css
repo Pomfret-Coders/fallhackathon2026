@@ -1,0 +1,348 @@
+/* Extra pieces for the challenge deck; everything else comes from ../opening/slides.css. */
+
+.intro .sub.tagline {
+  max-width: 22em;
+  margin: 0.2em 0 0.4em;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--measure);
+}
+
+.intro.revealed .sub.tagline { transition-delay: 0.4s; }
+
+.note {
+  margin: -0.4em 0 2.5vh;
+  font-size: clamp(1.1rem, 2.4vh, 1.6rem);
+  color: var(--steel);
+}
+
+/* A mock web page: department banner across the top, simulation below. */
+.page {
+  border: 2px solid var(--line);
+  background: #fff;
+}
+
+.page header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 0.6em 0.9em;
+  background: var(--steel);
+  color: #fff;
+}
+
+.page header strong {
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-size: clamp(1.4rem, 3.4vh, 2.4rem);
+  letter-spacing: -0.02em;
+}
+
+.page header span { font-size: clamp(0.9rem, 2vh, 1.3rem); opacity: 0.85; }
+
+.page canvas { border-bottom: none; max-height: 44vh; object-fit: contain; }
+
+.criteria {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6vw;
+  width: min(100%, 150vh);
+  margin: 2vh auto 0;
+}
+
+.criteria h3 {
+  margin: 0 0 0.6em;
+  padding-bottom: 0.3em;
+  border-bottom: 3px solid var(--line);
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-size: clamp(1.6rem, 4.4vh, 3rem);
+}
+
+.criteria ul, .criteria ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(1.1rem, 3.2vh, 2.2rem);
+  line-height: 1.25;
+}
+
+.criteria li { margin-bottom: 0.8em; padding-left: 1.6em; position: relative; }
+
+.checks li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--measure);
+  font-weight: 700;
+}
+
+.scored { counter-reset: n; }
+
+.scored li::before {
+  counter-increment: n;
+  content: counter(n);
+  position: absolute;
+  left: 0;
+  color: var(--measure);
+  font-weight: 700;
+}
+
+.scored strong { color: var(--ink); }
+
+.judges {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(1rem, 2.4vh, 1.6rem);
+  color: var(--steel);
+}
+
+@media (max-width: 800px) {
+  .criteria { grid-template-columns: 1fr; }
+}
+
+.lead {
+  margin: 0 0 2vh;
+  text-align: center;
+  font-size: clamp(1.1rem, 3.2vh, 2.2rem);
+}
+
+.lead b, .judges b { color: var(--measure); }
+
+/* Point bars: height scales with --pts, team symbol underneath. */
+.bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5vw;
+  height: 36vh;
+}
+
+.bar {
+  flex: 0 1 7em;
+  height: calc(var(--pts) * 25%);
+  min-height: 3.5em; /* room for the number and symbol on a 1-point bar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4em 0;
+  background: var(--steel);
+  color: #fff;
+  font-size: clamp(1.2rem, 3.6vh, 2.4rem);
+}
+
+.bar:first-child { background: var(--measure); }
+
+.bar span {
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-style: italic;
+}
+
+.criteria.one { grid-template-columns: 1fr; width: min(100%, 110vh); }
+
+/* Opening: the title stays put. Groups fade, then the Matter.js balls. */
+.slide.intro.opener {
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.opener.intro h1,
+.opener.intro.revealed h1 {
+  transform: none;
+  transition: none;
+}
+
+.opener .stage {
+  position: relative;
+  flex: 1;
+  width: min(92vw, 140vh);
+  min-height: 0;
+  margin-top: 4vh;
+}
+
+.opener .groups {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  align-content: center;
+}
+
+/* Beat the shared reveal rule so the heading's lift doesn't also pin the cards on. */
+.opener .group,
+.opener.intro.revealed .group {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.opener[data-step="groups"] .group {
+  animation: opener-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(0.05s + var(--i) * 0.1s);
+}
+
+.opener[data-step="matter"] .groups,
+.opener[data-step="fall"] .groups {
+  animation: opener-out 0.45s ease forwards;
+  pointer-events: none;
+}
+
+@keyframes opener-in {
+  from { opacity: 0; transform: translateY(2vh); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes opener-out {
+  to { opacity: 0; }
+}
+
+.opener canvas {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 0;
+  width: 100% !important;
+  height: auto !important;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+
+.opener[data-step="matter"] canvas,
+.opener[data-step="fall"] canvas {
+  z-index: 2;
+  opacity: 1;
+}
+
+/* Departments on a line from Easy to Hard? */
+.spectrum {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 0 1vw 4vh;
+}
+
+.names {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: end;
+}
+
+.names span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 0.28em;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+}
+
+.names b {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 2.7em;
+  padding: 0.32em 0.06em;
+  border: 2px solid var(--ink);
+  background: #fff;
+  font-weight: 600;
+  font-size: clamp(1.05rem, 1.85vw, 2.45rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.names span::after {
+  content: "";
+  width: 3px;
+  height: 3.2vh;
+  margin-top: 1.8vh;
+  background: var(--steel);
+}
+
+.shaft {
+  position: relative;
+  height: 7px;
+  margin: 0 0.2em;
+  background: linear-gradient(90deg, var(--ink), var(--measure));
+  font-size: clamp(1.5rem, 3.2vh, 2.2rem);
+}
+
+.shaft::before,
+.shaft::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  border-style: solid;
+}
+
+.shaft::before {
+  left: 0;
+  transform: translate(-55%, -50%);
+  border-width: 0.7em 1.15em 0.7em 0;
+  border-color: transparent var(--ink) transparent transparent;
+}
+
+.shaft::after {
+  right: 0;
+  transform: translate(55%, -50%);
+  border-width: 0.7em 0 0.7em 1.15em;
+  border-color: transparent transparent transparent var(--measure);
+}
+
+.poles {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.6vh;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 6.5vh, 4.4rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.poles span:last-child { color: var(--measure); }
+
+.strategy {
+  margin: 5vh 0 0;
+  text-align: center;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(2.4rem, 6.5vh, 4.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Leave-up summary. */
+.summary .board-title { font-size: clamp(2.4rem, 5.5vh, 4.2rem); }
+
+.summary .plain {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(1.15rem, 3.2vh, 2.15rem);
+  line-height: 1.3;
+}
+
+.summary .plain li { margin-bottom: 0.7em; padding-left: 0; }
+
+.summary em {
+  color: var(--measure);
+  font-style: italic;
+}
+
+.scored-line {
+  margin: 1.4em 0 0;
+  font-size: clamp(1.05rem, 2.6vh, 1.7rem);
+  line-height: 1.35;
+}
+
+.scored-line b { color: var(--measure); }

@@ -1,0 +1,264 @@
+:root {
+  --paper: #e4eef2;
+  --ink: #1a2c34;
+  --steel: #2c4652;
+  --line: #b7c9d1;
+  --measure: #7a4e08;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+body {
+  min-height: 100%;
+}
+
+.slide {
+  display: none;
+  min-height: 100vh;
+  padding: 7vh 6vw 12vh;
+}
+
+.slide.on { display: flex; flex-direction: column; }
+
+/* Title slide: the heading sits centered, then lifts to make room for the Matter.js title. */
+.slide.intro {
+  justify-content: center;
+  align-items: center;
+}
+
+.intro h1 {
+  margin: 0;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  letter-spacing: -0.03em;
+  transform: translateY(var(--drop, 0px)); /* set by the deck script */
+  transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.intro.revealed h1 { transform: none; }
+
+/* Groups rise in one after another with a small bounce. */
+.groups {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4vh 5vw;
+  width: min(84vw, 120vh);
+  margin-top: 5vh;
+}
+
+.group {
+  border-top: 3px solid var(--line);
+  padding-top: 1.2vh;
+  opacity: 0;
+  transform: translateY(30vh);
+  transition: transform 0.9s cubic-bezier(0.3, 1.45, 0.55, 1), opacity 0.4s ease;
+}
+
+.intro.revealed .group {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.35s + var(--i) * 0.18s);
+}
+
+.group h2 {
+  max-width: none;
+  margin: 0 0 0.3em;
+  font-size: clamp(2rem, 5.2vh, 3.8rem);
+}
+
+.group h2 span {
+  color: var(--measure);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.2em 1em;
+  font-size: clamp(1.3rem, 3.9vh, 2.8rem);
+}
+
+/* Fades in once the balls have settled into the title. */
+.intro .sub {
+  margin: 0.4em 0 0;
+  font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+  color: var(--steel);
+  opacity: 0;
+  transform: translateY(0.6em);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.intro.revealed .sub {
+  opacity: 1;
+  transform: none;
+  transition-delay: 4.2s;
+}
+
+.intro canvas {
+  width: min(88vw, 150vh) !important;
+  aspect-ratio: 1200 / 420;
+  border-bottom: none;
+}
+
+/* The grid slides only need room for the footer line. */
+.slide.end { padding-bottom: 8vh; }
+
+.who {
+  margin: 0 0 3vh;
+  color: var(--steel);
+  font-size: 1.25rem;
+}
+
+.pair {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6vw;
+  align-items: start;
+}
+
+h2 {
+  margin: 0 0 0.6em;
+  max-width: 12ch;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-size: clamp(2.4rem, 4.6vw, 4.25rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 0.98;
+}
+
+/* Render.create sets an inline pixel width; let the layout win. */
+canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 3 / 2;
+  border-bottom: 2px solid var(--line);
+}
+
+.board-title {
+  max-width: none;
+  text-align: center;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 0.45em;
+}
+
+.board {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5vh 2.5vw;
+  /* Narrow enough that three rows of 3:2 tiles plus captions fit the screen height. */
+  width: min(100%, calc(4.5 * ((70vh - 5rem) / 3 - 2.4rem) + 5vw));
+  margin: 0 auto;
+}
+
+.board .center {
+  aspect-ratio: 3 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid var(--line);
+}
+
+.board .center strong {
+  font-size: 1.2em;
+  letter-spacing: -0.02em;
+}
+
+.board .center em {
+  margin-top: 0.3em;
+  font-style: normal;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  font-weight: 500;
+  color: var(--measure);
+}
+
+.board li {
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  line-height: 1.2;
+}
+
+.board span { display: block; margin-top: 0.5em; }
+
+/* Slide 6: the same grid flanked by the API terms each challenge needs. */
+.with-terms {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 2.5vw;
+  align-items: stretch;
+}
+
+.with-terms .board {
+  align-self: start;
+  width: min(58vw, calc(4.5 * ((70vh - 5rem) / 3 - 2.4rem) + 5vw));
+}
+
+.terms {
+  /* Groups spread down the full grid height; text scales with screen height. */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.terms h3 {
+  margin: 0 0 0.2em;
+  font-family: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  font-size: clamp(0.9rem, 2.4vh, 2rem);
+}
+
+.terms ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(0.8rem, 2.15vh, 1.75rem);
+  line-height: 1.35;
+}
+
+.terms code {
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--measure);
+}
+
+.with-terms > .terms:first-child { text-align: right; }
+
+footer {
+  position: fixed;
+  left: 6vw;
+  right: 6vw;
+  bottom: 3vh;
+  display: flex;
+  justify-content: space-between;
+  color: var(--steel);
+  font-size: 1rem;
+}
+
+footer p { margin: 0; }
+
+@media (max-width: 800px) {
+  .pair { grid-template-columns: 1fr; }
+  .board { grid-template-columns: 1fr 1fr; }
+  h2 { max-width: 16ch; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide { scroll-behavior: auto; }
+}
