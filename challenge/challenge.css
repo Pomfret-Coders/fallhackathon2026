@@ -180,6 +180,17 @@
   transition: none;
 }
 
+.group .entry {
+  margin: 0.45em 0 0;
+  font-size: clamp(0.95rem, 2.2vh, 1.35rem);
+  line-height: 1.3;
+}
+
+.group .entry a {
+  color: var(--measure);
+  font-weight: 650;
+}
+
 .opener[data-step="groups"] .group {
   animation: opener-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
   animation-delay: calc(0.05s + var(--i) * 0.1s);
