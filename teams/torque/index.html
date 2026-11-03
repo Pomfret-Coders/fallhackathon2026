@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>World History · The trebuchet</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <p class="dept">History</p>
+      <h1>World History</h1>
+      <p class="lesson">The trebuchet</p>
+    </header>
+    <p class="brief">
+      Armies in the 12th century used a counterweight trebuchet against castle walls. The heavy mass sits on the short arm. When it falls, the long arm throws the stone. Set a counterweight, fire, then try a heavier one and compare the ranges.
+    </p>
+    <div class="stage">
+      <div id="view"></div>
+      <div class="panel">
+        <label for="weight">Counterweight <strong id="weight-label">2×</strong></label>
+        <input id="weight" type="range" min="1" max="5" step="1" value="2" />
+        <p class="scale">1× is the lightest mass in this model. 5× is five times that mass.</p>
+        <div class="actions">
+          <button type="button" id="fire">Fire</button>
+          <button type="button" id="reset">Reset</button>
+          <button type="button" id="pause">Pause</button>
+        </div>
+        <dl>
+          <div><dt>Range</dt><dd id="range">—</dd></div>
+          <div><dt>Release speed</dt><dd id="speed">—</dd></div>
+          <div><dt>Wall</dt><dd id="wall">—</dd></div>
+        </dl>
+        <p id="result">Fire to measure a shot. Range is the horizontal distance from the axle to where the stone lands or hits.</p>
+        <h2>Shots</h2>
+        <ol id="log"></ol>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.20.0/matter.min.js"></script>
+    <script src="sim.js?v=11"></script>
+  </body>
+</html>
